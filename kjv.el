@@ -1,5 +1,5 @@
-;;; kjv.el --- Minor mode to insert text, LaTeX, or HTML Bible
-;;; passages
+;;; kjv.el --- Minor mode to insert text, Markdown, LaTeX, or HTML
+;;; Bible passages
 
 ;; Copyright: (C) 2020 Jason R. Fruit
 ;; URL: https://github.com/JasonFruit/kjv-mode
@@ -40,7 +40,8 @@
 ;; created:
 ;;
 ;;   C-c C-i: insert a passage
-;;   C-c C-o: choose a different format (plain text, LaTeX, or HTML)
+;;   C-c C-o: choose a different format (plain text, Markdown, LaTeX,
+;;            or HTML)
 ;;   C-c C-p: search for a phrase
 ;;   C-c C-m: search for multiple words
 
@@ -53,6 +54,7 @@
   (shell-command (concat "kjv -"
 			 (cond ((equal kjv-format "plain") "p")
 			       ((equal kjv-format "latex") "l")
+			       ((equal kjv-format "markdown") "d")
 			       ((equal kjv-format "html") "m")
 			       (t "p"))
 			 "=\"" key "\"") 1))
@@ -66,14 +68,14 @@
 		((equal ext "htm") "html")
 		((equal ext "xhtml") "html")
 		((equal ext "txt") "plain")
-		((equal ext "md") "plain")
+		((equal ext "md") "markdown")
 		((equal ext "rst") "plain")
 		(t "plain")))))
 
 (defun kjv-choose-format ()
   "Choose a format to present Bible text in."
   (interactive)
-  (let ((choices '("html" "latex" "plain")))
+  (let ((choices '("html" "latex" "markdown" "plain")))
     (setq kjv-format (minibuffer-with-setup-hook 'minibuffer-complete
 		       (completing-read "Format: "
 					choices nil t)))))

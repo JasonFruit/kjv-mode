@@ -2,7 +2,7 @@ kjv-mode
 ======================================================================
 
 An Emacs minor mode to insert passages from the King James Bible in
-plain text, LaTeX, or HTML.
+plain text, Markdown, LaTeX, or HTML.
 
 Commentary
 ----------------------------------------------------------------------
@@ -24,7 +24,8 @@ Once kjv-mode is active, the following default keybindings will be
 created:
 
   C-c C-i: insert a passage
-  C-c C-o: choose a different format (plain text, LaTeX, or HTML)
+  C-c C-o: choose a different format (plain text, Markdown, LaTeX,
+           or HTML)
   C-c C-p: search for a phrase
   C-c C-m: search for multiple words
   
